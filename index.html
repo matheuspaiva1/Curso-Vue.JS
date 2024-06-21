@@ -7,23 +7,31 @@
   <title>Curso Vue.Js</title>
 </head>
 <body>
-  <div id="app" v-bind:style="{backgroundColor: color}">
-    <a v-bind:href="href">Origamid</a>
-    <a :href="comprou ? link : '' " v-if="comprou">{{link}}</a>
-    <input type="color" v-model="color">
-    {{color}}
+  <div id="app">
+    <p id="app1"> {{obj}} </p>
+    <p id="app2"> {{ferramenta}} </p>
+    <p id="app3"> {{instrumento}} </p>
   </div>
   <script>
     const vm = new Vue({
-      el: '#app',
+      el: '#app1',
       data:{
-        lado: 5,
-        comprou: true,
-        href: "https://www.origamid.com.br",
-        link: "https://www.magazineluiza.com.br/",
-        color: "#000",
+        obj: 'Objetos:'
       }
-      
+    });
+
+    const vm2 = new Vue({
+      el: '#app2',
+      data:{
+        ferramenta: 'Furadeira'
+      }
+    });
+
+    const vm3 = new Vue({
+      el: '#app3',
+      data:{
+        instrumento: 'Violino'
+      }
     });
 
     console.log(vm)
