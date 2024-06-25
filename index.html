@@ -9,29 +9,43 @@
 <body>
   <!-- Acerte o código abaixo -->
 <div id="app">
-  {{empresa}}, {{produto}}
-</div>
-<div id="quadrado">
-  <p>Lado: {{lado}}</p>
-  <p>Perimetro: {{lado *4}}</p>
-  <p>Area: {{lado * lado}}</p>
+  {{total}}
+  <button @click="increment">Incrementar</button>
+  <button @click="diminuir">Diminuir</button>
+  <p>{{instrumento}}</p>
+  <button @click="mudarNome('Violão')">Violão</button>
+  <button @click="verEvento()">Evento</button>
 
+  
 </div>
+
 <script>
 const vm = new Vue({
   el: "#app",
   data: {
-    empresa: "Apple",
-    produto: "IPhone",
-  }
+    total: 0,
+    instrumento: '',
+  },
+  methods: {
+    increment(){
+      this.total++
+      this.teste()
+    },
+    diminuir(){
+      this.total--
+    },
+    mudarNome(instrumento){
+      this.instrumento = instrumento
+    },
+    verEvento(event){
+      console.log(event)
+    },
+    teste(){
+      console.log('metodo ativado')
+    }
+  },
 });
 
-const vm2 = new Vue({
-  el: '#quadrado',
-  data: {
-    lado: 30,
-  }
-})
 </script>
 
 <!-- Crie uma instância que mostre
