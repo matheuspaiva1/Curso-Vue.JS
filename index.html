@@ -9,25 +9,22 @@
 <body>
   <!-- Acerte o código abaixo -->
 <div id="app">
-  <p>LatestTime: {{acoes.latestTime}}</p>
-  <p>LatestPrice: {{acoes.latestPrice}}</p>
-  <p>company name: {{acoes.companyName}}</p>
-  <button @click = 'puxarAcoes'>Puxar Acoes</button>
+  <a v-bind:href="links">link google</a>
+  <p :class="comporu ? liberar : naoLiberar">o cliente comprou? </p>
 </div>
 
 <script>
 const vm = new Vue({
   el: "#app",
   data: {
-    acoes: {},
+    links: 'https://www.google.com',
+    cor: 'azul',
+    liberar: 'verde',
+    naoLiberar: 'vermelho',
+    comprou: true,
   },
   methods: {
-    puxarAcoes(){
-     fetch('https://api.origamid.dev/stock/aapl/quote').then(response => response.json()).then(json => {
-      this.acoes = json;
-    })
-    },
-
+    
   },
 });
 
