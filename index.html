@@ -5,25 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="./vue.js"></script>
   <title>Curso Vue.Js</title>
+  <style>
+    .verde {
+      color: green;
+    }
+    .vermelho {
+      color: red;
+    }
+  </style>
 </head>
 <body>
   <!-- Acerte o código abaixo -->
 <div id="app">
-  <a v-bind:href="links">link google</a>
-  <p :class="comporu ? liberar : naoLiberar">o cliente comprou? </p>
+  <p :class="apple.marketCap > google.marketCap ? 'verde' : 'vermelho'">{{apple.companyName}}: {{apple.marketCap}}</p>
+  <p :class="google.marketCap > apple.marketCap ? 'verde' : 'vermelho'">{{google.companyName}}: {{google.marketCap}}</p>
+  <button @click="fetchApple">Ativar Apple</button>
+  <button @click="fetchGoogle">Ativar Google</button>
+
 </div>
 
 <script>
 const vm = new Vue({
   el: "#app",
   data: {
-    links: 'https://www.google.com',
-    cor: 'azul',
-    liberar: 'verde',
-    naoLiberar: 'vermelho',
-    comprou: true,
+    google: {},
+    apple: {},
+    
   },
   methods: {
+    fetchGoogle(){
+      fetch('https://api.origamid.dev/stock/aapl/quote').then(response => response.json()).then(google => {
+        this.google = google;
+      })
+    },
+    fetchApple(){
+      fetch('https://api.origamid.dev/stock/googl/quote').then(response => response.json()).then(apple => {
+        this.apple = apple;
+      })
+    }
     
   },
 });
