@@ -9,40 +9,25 @@
 <body>
   <!-- Acerte o código abaixo -->
 <div id="app">
-  {{total}}
-  <button @click="increment">Incrementar</button>
-  <button @click="diminuir">Diminuir</button>
-  <p>{{instrumento}}</p>
-  <button @click="mudarNome('Violão')">Violão</button>
-  <button @click="verEvento()">Evento</button>
-
-  
+  <p>LatestTime: {{acoes.latestTime}}</p>
+  <p>LatestPrice: {{acoes.latestPrice}}</p>
+  <p>company name: {{acoes.companyName}}</p>
+  <button @click = 'puxarAcoes'>Puxar Acoes</button>
 </div>
 
 <script>
 const vm = new Vue({
   el: "#app",
   data: {
-    total: 0,
-    instrumento: '',
+    acoes: {},
   },
   methods: {
-    increment(){
-      this.total++
-      this.teste()
+    puxarAcoes(){
+     fetch('https://api.origamid.dev/stock/aapl/quote').then(response => response.json()).then(json => {
+      this.acoes = json;
+    })
     },
-    diminuir(){
-      this.total--
-    },
-    mudarNome(instrumento){
-      this.instrumento = instrumento
-    },
-    verEvento(event){
-      console.log(event)
-    },
-    teste(){
-      console.log('metodo ativado')
-    }
+
   },
 });
 
