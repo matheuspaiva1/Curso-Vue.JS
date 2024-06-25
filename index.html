@@ -7,34 +7,37 @@
   <title>Curso Vue.Js</title>
 </head>
 <body>
-  <div id="app">
-    <p id="app1"> {{obj}} </p>
-    <p id="app2"> {{ferramenta}} </p>
-    <p id="app3"> {{instrumento}} </p>
-  </div>
-  <script>
-    const vm = new Vue({
-      el: '#app1',
-      data:{
-        obj: 'Objetos:'
-      }
-    });
+  <!-- Acerte o código abaixo -->
+<div id="app">
+  {{empresa}}, {{produto}}
+</div>
+<div id="quadrado">
+  <p>Lado: {{lado}}</p>
+  <p>Perimetro: {{lado *4}}</p>
+  <p>Area: {{lado * lado}}</p>
 
-    const vm2 = new Vue({
-      el: '#app2',
-      data:{
-        ferramenta: 'Furadeira'
-      }
-    });
+</div>
+<script>
+const vm = new Vue({
+  el: "#app",
+  data: {
+    empresa: "Apple",
+    produto: "IPhone",
+  }
+});
 
-    const vm3 = new Vue({
-      el: '#app3',
-      data:{
-        instrumento: 'Violino'
-      }
-    });
+const vm2 = new Vue({
+  el: '#quadrado',
+  data: {
+    lado: 30,
+  }
+})
+</script>
 
-    console.log(vm)
-  </script>
+<!-- Crie uma instância que mostre
+baseado no valor do lado do quadrado
+o seu perímetro (lX4) e área (lXl).
+O lado do quadrado deve ser um estado reativo -->
+
 </body>
 </html>
